@@ -24,6 +24,11 @@ let cards = [
 buttonShow.onclick = function() {
     // Log message
     console.log("Showing the deck...");
+    
+    // play a sound
+    let audio = document.querySelector(".audio");
+    audio.play();
+    
     // For of loop
     for (let card of cards) {
         game.insertAdjacentHTML("beforeend",
@@ -36,6 +41,7 @@ buttonShow.onclick = function() {
 // Button to Double Deck
 buttonDouble.onclick = function() {
     for (let card of cards) {
+        // 
         if (cards.length !== 16) {
             cards.push(card);
             game.insertAdjacentHTML("beforeend", "<div style='background-image: url(" + url + card + ")'class='card'>");
@@ -43,18 +49,17 @@ buttonDouble.onclick = function() {
     }
 };
 console.log("now the deck has" + cards.length + "cards. ");
-buttonDouble.style.color = "dark red";
+buttonDouble.style.color = "";
 
 // Button to Shuffle Cards
 buttonShuffle.onclick = function() {
     shuffle(cards);
     game.innerHTML = "";
-
+let i = 0 ;
     for (let card of cards) {
         game.insertAdjacentHTML("beforeend",
-            "<div style='background-image: url(" + url +
-            card +
-            ")' class='card'>");
+            "<div style='background-image: url(" + url + card + ")' class='card' id='" + i+"'>");
+        i = i+1;
     }
 };
 
@@ -74,7 +79,13 @@ function shuffle(array) {
     return array;
 }
 // Button to Flip All Cards
-
+buttonFlip.onclick = function() {
+    let i = 0;
+    for (card of cards) {
+        document.getElementById(i).style.backgroundImage = "";
+        i = i + 1;
+    }
+};
 
 // Here we need a function for clicking on individual cards.
 // (It won't work until we finish writing it.)
