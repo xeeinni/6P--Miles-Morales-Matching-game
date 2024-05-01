@@ -1,6 +1,6 @@
 body {
     margin: 1em;
-    background: lightblue;
+    background: darkred;
     font-family: "Flamenco";
     text-align: center;
     margin: 0 0 10px 0;
@@ -27,3 +27,4 @@ game {
     font-weight: 400;
     font-style: normal;
 }
+
